@@ -1,0 +1,2 @@
+# CosCo
+Cototha Script Compiler
