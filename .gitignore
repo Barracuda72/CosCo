@@ -31,3 +31,8 @@
 # Debug files
 *.dSYM/
 *.su
+
+# Build output
+y.*
+main
+lex.yy.c
