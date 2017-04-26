@@ -36,3 +36,6 @@
 y.*
 main
 lex.yy.c
+
+# Documentation
+*.doc
