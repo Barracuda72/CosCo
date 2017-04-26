@@ -530,15 +530,7 @@ void generate_class_head(FILE *output, tree *node, int level)
 
   tree *name = node->value;
 
-  if (name->right != NULL)
-  {
-    /* Has base class */
-    generate_identifier(output, name->left, level);
-    fprintf(output, " : ");
-    generate_identifier(output, name->right, level);
-  } else {
-    generate_identifier(output, name->left, level);
-  }
+  generate_identifier(output, name->left, level);
   generate_statement_end(output);
 }
 
