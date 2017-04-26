@@ -5,6 +5,9 @@
 
 struct ResourceManager : Reference
 {
+  Integer CreateFormPage(Reference refSprite, String strPageID);
+  void DeleteContents();
+  Integer LoadResource(String filename);
 };
 
 #endif // __ResourceManager_H__

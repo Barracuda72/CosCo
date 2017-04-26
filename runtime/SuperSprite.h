@@ -1,9 +1,9 @@
 #ifndef __SuperSprite_H__
 #define __SuperSprite_H__
 
-#include "Reference.h"
+#include "Sprite.h"
 
-struct SuperSprite : Reference
+struct SuperSprite : Sprite
 {
 };
 

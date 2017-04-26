@@ -1,10 +1,13 @@
 #ifndef __Hash_H__
 #define __Hash_H__
 
-#include "Reference.h"
+#include "Array.h"
+#include "Integer.h"
+#include "String.h"
 
-struct Hash : Reference
+struct Hash : Array
 {
+  String GetTagName(Integer a);
 };
 
 #endif // __Hash_H__

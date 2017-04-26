@@ -5,6 +5,9 @@
 
 struct Integer : Reference
 {
+  Integer SetBit(Integer a);
+  Integer ShiftLeft(Integer a);
+  Integer TestBit(Integer a);
 };
 
 #endif // __Integer_H__
