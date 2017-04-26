@@ -590,7 +590,7 @@ void generate_class_decl(FILE *output, tree *node, int level)
 
     stmts = stmts->next;
   }
-  fprintf(output, "}\n\n");
+  fprintf(output, "};\n\n");
 }
 
 /*
