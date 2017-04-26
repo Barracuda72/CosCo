@@ -828,6 +828,9 @@ void generator_foreach_cond(FILE *output, tree *root, int node_type, void (*gene
  */
 void generate_program(FILE *output, tree *root)
 {
+  /* Step 0: output runtime inclusion */
+  fprintf(output, "#include \"Runtime.h\"\n");
+
   /* Step 1: generate defines (constants) */
   fprintf(output, "\n/*\n * Constants\n */\n\n");
   generator_foreach_cond(output, root, NODE_CONST_DECL, generate_const_decl);
