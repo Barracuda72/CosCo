@@ -10,7 +10,8 @@
 /*
  * Marker used for field or method access
  */
-static const char *invoke_marker = "->";
+static const char *invoke_marker_this = "->";
+static const char *invoke_marker = ".";
 
 /*
  * Mark end of statement
@@ -203,7 +204,11 @@ void generate_var_use(FILE *output, tree *node, int level)
 
     case NODE_FIELD_USE:
       generate_expression(output, node->left, level);
-      fprintf(output, invoke_marker);
+      /* HACK: around "this" */
+      if (node->left != NULL && node->left->type == NODE_IDENTIFIER && !strcmp("this", node->left->value))
+        fprintf(output, invoke_marker_this);
+      else
+        fprintf(output, invoke_marker);
       generate_var_use(output, node->right, level);
       break;
 
