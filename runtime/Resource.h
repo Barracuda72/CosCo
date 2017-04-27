@@ -4,10 +4,11 @@
 #include "Reference.h"
 #include "Integer.h"
 #include "Real.h"
+#include "Array.h"
 
 struct Resource : Reference
 {
-  Resource res; /* Maybe should emulate this smthing? */
+  //Resource res; /* Maybe should emulate this smthing? */
 
   Reference GetInfo(); /* Really ImageInfo/SoundInfo */
   Integer IsPlaying();

@@ -2,6 +2,7 @@
 #define __ResourceManager_H__
 
 #include "Reference.h"
+#include "Integer.h"
 
 struct ResourceManager : Reference
 {

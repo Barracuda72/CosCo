@@ -11,7 +11,7 @@ struct Sprite : Resource
 {
   void AddSprite(Integer priority, Sprite sprite);
   Integer AttachImage(Reference refImage, Integer nFrameNum /*=-1 by def*/);
-  Integer AttachImage(Reference refImage, Integer nFrameNum /*=-1 by def*/, Rect rcClip);
+  Integer AttachImage(Reference refImage, Integer nFrameNum /*=-1 by def*/, Reference /*Rect*/ rcClip);
   void BeginActivation(Integer nDurationTime, Integer nActionType /*=0 by def*/);
   void BeginActivation(Array nDurationList, Integer nActionType /*=0 by def*/);
   Integer CreateSprite(Integer format, Integer width, Integer height);
