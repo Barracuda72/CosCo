@@ -9,21 +9,23 @@
 
 struct Sprite : Resource
 {
-  Reference AddSprite(Integer priority, Sprite sprite); /* Unk return */
-  Reference AttachImage(Reference a); /* smthng ID_FRM_XXXX, Unk return */
-  Reference BeginActivation(Integer time); /* Unk return */
-  Reference CreateSprite(Integer flags, Integer width, Integer height); /* Unk return */
-  Reference DetachAllSprite(); /* Unk return */
-  Reference DetachSprite(Sprite sprite); /* Unk return */
-  Reference DrawImage(Sprite base, Reference /*SpriteParam*/ spriteParam); /* Unk return */
-  Reference DrawImage(Sprite base, Reference /*ImageInfo*/ imageInfo, Integer b, Reference /*Rect*/ rect); /* Unk return */
-  Reference Enable(Integer enable, String b); /* Unk return */
-  Reference FillRect(Reference /*Rect*/ rect, Reference /*RGB*/ color); /* Unk return */
-  Reference FlushActivation(); /* Unk return */
-  Reference GetParameter(Reference /*SpriteParam*/ param); /* By reference? Unk return */
-  String GetSpriteText(String strID); 
-  Integer IsVisible(); /* Unk return */
-  Reference MovePosition(Integer x, Integer y); /* Unk return */
+  void AddSprite(Integer priority, Sprite sprite);
+  Integer AttachImage(Reference refImage, Integer nFrameNum /*=-1 by def*/);
+  Integer AttachImage(Reference refImage, Integer nFrameNum /*=-1 by def*/, Rect rcClip);
+  void BeginActivation(Integer nDurationTime, Integer nActionType /*=0 by def*/);
+  void BeginActivation(Array nDurationList, Integer nActionType /*=0 by def*/);
+  Integer CreateSprite(Integer format, Integer width, Integer height);
+  void DetachAllSprite();
+  void DetachSprite(Reference sprite);
+  Integer DrawImage(Reference rImage, Reference /*SpriteParam*/ spriteParam, Integer iFrame /*=0 by def*/);
+  Integer DrawImage(Reference rImage, Reference /*ImageInfo*/ spriteParam, Integer iFrame/*=0 by def*/, Reference /*Rect*/ rcClip);
+  void Enable(Integer enable, String strID/*="" by def*/);
+  Integer FillRect(Reference /*Rect*/ rect, Integer rgbaFill, Integer nTransparency /*=0 by def*/, Integer nFlags/*=0 by def*/);
+  void FlushActivation();
+  void GetParameter(Reference /*SpriteParam*/ param);
+  String GetSpriteText(String strID);
+  Integer IsVisible();
+  void MovePosition(Integer x, Integer y);
   void Refresh();
   Integer SetAlphaImage(Reference refAlpha, Integer nAlphaRange);
   void SetBezierCurve(Array bzCurve);

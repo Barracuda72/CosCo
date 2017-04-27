@@ -7,16 +7,20 @@
 
 struct Resource : Reference
 {
+  Resource res; /* Maybe should emulate this smthing? */
+
   Reference GetInfo(); /* Really ImageInfo/SoundInfo */
   Integer IsPlaying();
-  Integer LoadImage(String a); /* Status? */
-  Integer LoadSound(String a); /* Status? */
-  Integer LoadSound(String a, Integer b); /* Status? */
-  Reference Play(Integer a, Integer b); /* b = channel (voice, music) Unk ret */
-  Reference Release(); /* Unknown return */
-  Reference SetTotalVolume(Integer a, Real b); /* channel and level? Unk return */
-  Reference SetVolume(Real a, Real b); /* Unknown return */
-  Reference Stop(); /* Unk return */
+  Integer IsPendingEnvelope();
+  Integer LoadImage(String filename);
+  Integer LoadSound(String filename);
+  Integer LoadSound(String filename, Integer nThreshold/*=-1 by def*/);
+  Integer Play(Integer nIntroSample/*=-1 by def*/, Integer flag /*=ptfMusic by def*/); 
+  void Release();
+  void SetTotalVolume(Integer flag, Real rTotalVol);
+  void SetVolumeEnvelope(Array bezier, Integer nDurationTime);
+  void SetVolume(Real left, Real right);
+  void Stop();
 };
 
 #endif // __Resource_H__
