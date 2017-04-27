@@ -1,4 +1,4 @@
-SOURCES=tree.c backend.c generator.c
+SOURCES=tree.c backend.c generator.c type.c
 
 ifeq ($(DEBUG),1)
   DBG=-t
