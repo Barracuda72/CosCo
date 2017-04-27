@@ -5,6 +5,7 @@
 #include <assert.h>
 
 #include "tree.h"
+#include "type.h"
 #include "generator.h"
 
 /*
@@ -733,7 +734,9 @@ void generate_function_head(FILE *output, tree *node, int level)
   /* Put 'auto' keyword instead of type and let compiler deduce it */
   if (node->id != FTYPE_CONSTRUCTOR)
   {
-    fprintf(output, "auto ");
+    char *type = NULL;
+    deduce_func_type(node, &type);
+    fprintf(output, "%s ", type);
   }
 
   tree *name = node->left;
@@ -769,7 +772,9 @@ void generate_function_def(FILE *output, tree *node, int level)
   /* Put 'auto' keyword instead of type and let compiler deduce it */
   if (node->id != FTYPE_CONSTRUCTOR)
   {
-    fprintf(output, "auto ");
+    char *type = NULL;
+    deduce_func_type(node, &type);
+    fprintf(output, "%s ", type);
   }
 
   tree *name = node->left;
