@@ -3,9 +3,15 @@
 
 #include "Reference.h"
 #include "Integer.h"
+#include "String.h"
 
 struct Array : Reference
 {
+  Reference operator[](Reference& idx);
+  Reference operator[](int idx);
+  void operator+(String& s);
+  void operator+(Integer& i);
+
   Integer GetLength();
   void RemoveAll();
   void Remove();

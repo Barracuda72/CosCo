@@ -6,6 +6,21 @@
 
 struct String : Reference
 {
+  String();
+  String(const char *s);
+
+  friend int operator==(String& one, String& other);
+  friend int operator==(String& one, const char *other);
+  friend int operator==(const char* one, String& other);
+  friend int operator!=(String& one, String& other);
+  friend int operator!=(String& one, const char *other);
+  friend int operator!=(const char* one, String& other);
+  friend String operator+(String& one, String& other);
+  friend String operator+(String& one, const char *other);
+  friend String operator+(const char* one, String& other);
+
+  String operator=(Integer& i);
+
   void Call(); /* Call string as scenario */
   Integer Char(Integer i /* = 0 by default */);
   Integer Find(String s, Integer i /* = 0 by default*/);
