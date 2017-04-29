@@ -14,6 +14,9 @@
 static const char *invoke_marker_this = "->";
 static const char *invoke_marker = ".";
 
+/* UGLY HACK for type deduction */
+static tree* cur_root = NULL;
+
 /*
  * Mark end of statement
  */
@@ -735,7 +738,7 @@ void generate_function_head(FILE *output, tree *node, int level)
   if (node->id != FTYPE_CONSTRUCTOR)
   {
     char *type = NULL;
-    deduce_func_type(node, /*TODO!*/node, &type);
+    deduce_func_type(node, /*TODO!*/cur_root, &type);
     fprintf(output, "%s ", type);
   }
 
@@ -773,7 +776,7 @@ void generate_function_def(FILE *output, tree *node, int level)
   if (node->id != FTYPE_CONSTRUCTOR)
   {
     char *type = NULL;
-    deduce_func_type(node, /*TODO!*/node, &type);
+    deduce_func_type(node, /*TODO!*/cur_root, &type);
     fprintf(output, "%s ", type);
   }
 
@@ -838,6 +841,9 @@ void generator_foreach_cond(FILE *output, tree *root, int node_type, void (*gene
  */
 void generate_program(FILE *output, tree *root)
 {
+  /* UGLY HACK */
+  cur_root = root;
+
   /* Step 0: output runtime inclusion */
   fprintf(output, "#include \"Runtime.h\"\n");
 
