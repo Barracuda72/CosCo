@@ -735,7 +735,7 @@ void generate_function_head(FILE *output, tree *node, int level)
   if (node->id != FTYPE_CONSTRUCTOR)
   {
     char *type = NULL;
-    deduce_func_type(node, &type);
+    deduce_func_type(node, /*TODO!*/node, &type);
     fprintf(output, "%s ", type);
   }
 
@@ -773,7 +773,7 @@ void generate_function_def(FILE *output, tree *node, int level)
   if (node->id != FTYPE_CONSTRUCTOR)
   {
     char *type = NULL;
-    deduce_func_type(node, &type);
+    deduce_func_type(node, /*TODO!*/node, &type);
     fprintf(output, "%s ", type);
   }
 

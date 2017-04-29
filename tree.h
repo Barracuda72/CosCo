@@ -81,6 +81,7 @@ enum {
   NODE_FUNC_CALL    = 1018,
   NODE_METH_INVOKE  = 1019,
   NODE_IDENTIFIER   = 1020,
+  NODE_ID_TYPE      = 1021,
 
   /*
    * Nodes for constants

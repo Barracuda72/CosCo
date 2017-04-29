@@ -5,6 +5,7 @@
 
 #include "tree.h"
 #include "backend.h"
+#include "type.h"
 
 extern char *yytext;
 extern int yylineno;
