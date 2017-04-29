@@ -10,17 +10,17 @@
 struct Sprite : Resource
 {
   void AddSprite(Integer priority, Sprite sprite);
-  Integer AttachImage(Reference refImage, Integer nFrameNum /*=-1 by def*/);
+  Integer AttachImage(Reference refImage, Integer nFrameNum = -1 );
   Integer AttachImage(Reference refImage, Integer nFrameNum /*=-1 by def*/, Reference /*Rect*/ rcClip);
-  void BeginActivation(Integer nDurationTime, Integer nActionType /*=0 by def*/);
-  void BeginActivation(Array nDurationList, Integer nActionType /*=0 by def*/);
+  void BeginActivation(Integer nDurationTime, Integer nActionType = 0);
+  void BeginActivation(Array nDurationList, Integer nActionType = 0);
   Integer CreateSprite(Integer format, Integer width, Integer height);
   void DetachAllSprite();
   void DetachSprite(Reference sprite);
-  Integer DrawImage(Reference rImage, Reference /*SpriteParam*/ spriteParam, Integer iFrame /*=0 by def*/);
+  Integer DrawImage(Reference rImage, Reference /*SpriteParam*/ spriteParam, Integer iFrame = 0);
   Integer DrawImage(Reference rImage, Reference /*ImageInfo*/ spriteParam, Integer iFrame/*=0 by def*/, Reference /*Rect*/ rcClip);
   void Enable(Integer enable, String strID/*="" by def*/);
-  Integer FillRect(Reference /*Rect*/ rect, Integer rgbaFill, Integer nTransparency /*=0 by def*/, Integer nFlags/*=0 by def*/);
+  Integer FillRect(Reference /*Rect*/ rect, Integer rgbaFill, Integer nTransparency = 0, Integer nFlags = 0);
   void FlushActivation();
   void GetParameter(Reference /*SpriteParam*/ param);
   String GetSpriteText(String strID);

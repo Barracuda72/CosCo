@@ -8,19 +8,19 @@ struct Integer : Reference
   Integer();
   Integer(int i);
 
-  friend int operator==(Integer& one, const Integer& other);
-  friend int operator!=(Integer& one, const Integer& other);
-  friend int operator<(Integer& one, const Integer& other);
-  friend int operator>(Integer& one, const Integer& other);
-  friend int operator<=(Integer& one, const Integer& other);
-  friend int operator>=(Integer& one, const Integer& other);
-  friend int operator+(Integer& one, const Integer& other);
-  friend int operator-(Integer& one, const Integer& other);
-  friend int operator*(Integer& one, const Integer& other);
-  friend int operator/(Integer& one, const Integer& other);
-  friend int operator%(Integer& one, const Integer& other);
-  friend int operator&(Integer& one, const Integer& other);
-  friend int operator|(Integer& one, const Integer& other);
+  friend int operator==(const Integer& one, const Integer& other);
+  friend int operator!=(const Integer& one, const Integer& other);
+  friend int operator<(const Integer& one, const Integer& other);
+  friend int operator>(const Integer& one, const Integer& other);
+  friend int operator<=(const Integer& one, const Integer& other);
+  friend int operator>=(const Integer& one, const Integer& other);
+  friend int operator+(const Integer& one, const Integer& other);
+  friend int operator-(const Integer& one, const Integer& other);
+  friend int operator*(const Integer& one, const Integer& other);
+  friend int operator/(const Integer& one, const Integer& other);
+  friend int operator%(const Integer& one, const Integer& other);
+  friend int operator&(const Integer& one, const Integer& other);
+  friend int operator|(const Integer& one, const Integer& other);
 
   Integer SetBit(Integer a);
   Integer ShiftLeft(Integer a);

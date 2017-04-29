@@ -12,7 +12,8 @@ OBJECTS=\
   MessageSprite.o \
   File.o \
   Window.o \
-  InputFilter.o
+  InputFilter.o \
+  Cotopha.o
 
 TARGET=libCRT.so
 CXXFLAGS=-fPIC -g

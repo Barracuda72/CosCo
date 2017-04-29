@@ -15,8 +15,8 @@ struct Resource : Reference
   Integer IsPendingEnvelope();
   Integer LoadImage(String filename);
   Integer LoadSound(String filename);
-  Integer LoadSound(String filename, Integer nThreshold/*=-1 by def*/);
-  Integer Play(Integer nIntroSample/*=-1 by def*/, Integer flag /*=ptfMusic by def*/); 
+  Integer LoadSound(String filename, Integer nThreshold = -1);
+  Integer Play(Integer nIntroSample = -1, Integer flag = 0 /*=ptfMusic by def*/); 
   void Release();
   void SetTotalVolume(Integer flag, Real rTotalVol);
   void SetVolumeEnvelope(Array bezier, Integer nDurationTime);

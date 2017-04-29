@@ -11,15 +11,15 @@ struct Window : Sprite
   void ChangeDisplaySize(Integer w, Integer h, Integer bpp, Integer frequency);
   void CreateDisplay();
   void CreateDisplay(String strWindowName, Integer fCooperationLevel, 
-                     Integer w, Integer h, Integer bpp /* = 0 by default*/, Integer frequency /* = 0 by default*/);
+                     Integer w, Integer h, Integer bpp = 0, Integer frequency = 0);
   void FlushCommandQueue();
-  void FlushCommandQueue(Integer fQueueCommand /* = true by default */);
-  Integer GetCommand(Reference wscCmd, Integer nTimeout, Integer fRemove /* = true by default*/);
+  void FlushCommandQueue(Integer fQueueCommand = 1/*true*/);
+  Integer GetCommand(Reference wscCmd, Integer nTimeout, Integer fRemove = 1 /* true */);
   Reference /*Size*/ GetDisplaySize();
   Integer GetOptionalFuncFlag();
-  Integer Lock(Integer nTimeout /* = -1, or infinite by def*/);
+  Integer Lock(Integer nTimeout = -1 /* INFINITE */);
   void SetOptionalFuncFlag(Integer nFlag);
-  void ShowCursor(Integer fShow /* = true by def*/);
+  void ShowCursor(Integer fShow = 1 /* true */);
   Integer Unlock();
 };
 

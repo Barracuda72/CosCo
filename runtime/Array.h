@@ -7,10 +7,10 @@
 
 struct Array : Reference
 {
-  Reference operator[](Reference& idx);
+  Reference operator[](const Reference& idx);
   Reference operator[](int idx);
-  void operator+(String& s);
-  void operator+(Integer& i);
+  void operator+(const String& s);
+  void operator+(const Integer& i);
 
   Integer GetLength();
   void RemoveAll();

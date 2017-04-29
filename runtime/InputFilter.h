@@ -10,11 +10,11 @@ struct InputFilter : Reference
   void CloseFilter();
   void DeleteInputFilter();
   void FlushInputQueue(Integer nLimit);
-  Integer FlushJoyButtonPushed(Integer iDevNum /*= 0 by def*/, Integer iKeyNum /*= -1 by def*/);
-  Integer GetJoyButtonPushed(Integer iKeyNum, Integer iDevNum /*= 0 by def*/);
-  Integer IsJoyButtonPushing(Integer iKeyNum, Integer iDevNum /*= 0 by def*/);
+  Integer FlushJoyButtonPushed(Integer iDevNum = 0, Integer iKeyNum = -1);
+  Integer GetJoyButtonPushed(Integer iKeyNum, Integer iDevNum = 0);
+  Integer IsJoyButtonPushing(Integer iKeyNum, Integer iDevNum = 0);
   Integer LoadInputFilter(String filename);
-  void OpenFilter(Integer nFilterType /*= 0 by def*/);
+  void OpenFilter(Integer nFilterType = 0);
   void OpenFilter(Integer nFilterType /*= 0 by def*/, Reference refWindow);
 };
 

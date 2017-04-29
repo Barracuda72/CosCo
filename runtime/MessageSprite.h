@@ -15,7 +15,7 @@ struct MessageSprite : Sprite
   Integer IsMessagePending();
   void MoveCursorPos(Integer x, Integer y);
   Integer OutputMessage(String strMsg);
-  Integer SetDefaultMsgSpeed(Integer nCharSpeed, Integer nFadeSpeed, Integer nSpeedRatio /* = 100H by def*/);
+  Integer SetDefaultMsgSpeed(Integer nCharSpeed, Integer nFadeSpeed, Integer nSpeedRatio = 0x100);
   Integer SetFontBordering(Integer fBordering);
 };
 
