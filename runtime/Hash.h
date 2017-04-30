@@ -5,8 +5,10 @@
 #include "Integer.h"
 #include "String.h"
 
-struct Hash : Array
+template <class T>
+class Hash : Array<T>
 {
+public:
   String GetTagName(Integer a);
 };
 

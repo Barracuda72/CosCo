@@ -6,7 +6,7 @@
 #include "String.h"
 #include "Sprite.h"
 
-struct File : Reference
+struct File : Object
 {
   void Close();
   Integer DumpContext();

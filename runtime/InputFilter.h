@@ -5,7 +5,7 @@
 #include "Integer.h"
 #include "String.h"
 
-struct InputFilter : Reference
+struct InputFilter : Object
 {
   void CloseFilter();
   void DeleteInputFilter();

@@ -267,7 +267,7 @@
 struct Integer;
 struct Real;
 struct String;
-struct Array;
+//struct Array;
 
 struct Point;
 struct Size;
@@ -409,16 +409,18 @@ struct InputEvent
   InputEvent();
 };
 
-struct Bezier1D : Array
+struct Bezier1D //: Array
 {
+  Array <Real> parent;
   Bezier1D();
   void SetLinear(Real r0, Real r1);
   void SetAcceleration(Real a0, Real a1);
   Real pt(Real t);
 };
 
-struct Bezier2D : Array
+struct Bezier2D //: Array
 {
+  Array <Vector2D> parent;
   Bezier2D();
   void SetLinear(Real x0, Real y0, Real x1, Real y1);
   void SetAcceleration(Real a0, Real a1);
@@ -426,8 +428,9 @@ struct Bezier2D : Array
   Vector2D pt(Real t);
 };
 
-struct Bezier3D : Array
+struct Bezier3D //: Array
 {
+  Array <Vector> parent;
   Bezier3D();
   void SetLinear(Real x0, Real y0, Real z0, Real x1, Real y1, Real z1);
   void SetAcceleration(Real a0, Real a1);
@@ -510,7 +513,7 @@ struct EffectParam
   EffectParam();
 };
 
-struct ParticleFlick
+struct ParticleFlick : Object
 {
   Real rAmplitude;
   Real rAmplitudeRange;
@@ -539,7 +542,7 @@ struct ParticleParam
   Real rRevSpeedRange;
   Real rZoom;
   Real rZoomRange;
-  Array pfFlickness;
+  Array<ParticleFlick> pfFlickness;
   Vector2D vGenSpeed;
   Real rGenSpeedRange;
   Vector2D vStream;
@@ -569,7 +572,7 @@ struct ParticleParam3D
   Real rRevRevRange;
   Real rZoom;
   Real rZoomRange;
-  Array pfFlickness;
+  Array <ParticleFlick> pfFlickness;
   Vector vGenSpeed;
   Real rGenSpeedRange;
   Vector vStream;
@@ -579,6 +582,8 @@ struct ParticleParam3D
 
 struct BezierR64
 {
+  Array<Real> cp;
+
   void SetLinear(Real r0, Real r1);
   void SetAcceleration(Real a0, Real a1);
   Real pt(Real t);
@@ -611,6 +616,5 @@ Size ISize(Integer w, Integer h);
 Rect IRect(Integer left, Integer top, Integer right, Integer bottom);
 Vector2D IVector2D(Real x, Real y);
 Vector IVector(Real x, Real y, Real z);
-void op_init();
 
 #endif // __COTOPHA_H__

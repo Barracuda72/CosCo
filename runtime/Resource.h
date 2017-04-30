@@ -6,7 +6,7 @@
 #include "Real.h"
 #include "Array.h"
 
-struct Resource : Reference
+struct Resource : Object
 {
   //Resource res; /* Maybe should emulate this smthing? */
 
@@ -19,7 +19,7 @@ struct Resource : Reference
   Integer Play(Integer nIntroSample = -1, Integer flag = 0 /*=ptfMusic by def*/); 
   void Release();
   void SetTotalVolume(Integer flag, Real rTotalVol);
-  void SetVolumeEnvelope(Array bezier, Integer nDurationTime);
+  void SetVolumeEnvelope(Array <Bezier2D> bezier, Integer nDurationTime);
   void SetVolume(Real left, Real right);
   void Stop();
 };

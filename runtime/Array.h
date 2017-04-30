@@ -5,10 +5,13 @@
 #include "Integer.h"
 #include "String.h"
 
-struct Array : Reference
+template <class T>
+class Array : Object
 {
-  Reference operator[](const Reference& idx);
-  Reference operator[](int idx);
+public:
+  T operator[](const Reference& idx);
+  T operator[](const Integer& idx);
+  T operator[](int idx);
   void operator+(const String& s);
   void operator+(const Integer& i);
 

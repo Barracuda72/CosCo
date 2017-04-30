@@ -4,7 +4,7 @@
 #include "Reference.h"
 #include "Integer.h"
 
-struct ResourceManager : Reference
+struct ResourceManager : Object
 {
   Integer CreateFormPage(Reference refSprite, String strPageID);
   void DeleteContents();

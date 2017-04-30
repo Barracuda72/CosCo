@@ -3,7 +3,7 @@
 
 #include "Reference.h"
 
-struct Integer : Reference
+struct Integer : Object
 {
   Integer();
   Integer(int i);

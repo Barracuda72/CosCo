@@ -4,7 +4,7 @@
 #include "Reference.h"
 #include "Integer.h"
 
-struct String : Reference
+struct String : Object
 {
   String();
   String(const char *s);

@@ -2,8 +2,9 @@
 #define __Real_H__
 
 #include "Reference.h"
+#include "Integer.h"
 
-struct Real : Reference
+struct Real : Object
 {
 
   Real();
