@@ -7,9 +7,9 @@
  * Constants
  */
 
-#define NULL 0
-#define true (0 - 1)
-#define false 0
+//#define NULL 0
+//#define true (0 - 1)
+//#define false 0
 #define eslErrSuccess 0
 #define eslErrNotSupported (0 - 1)
 #define eslErrGeneral 1

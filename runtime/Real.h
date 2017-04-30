@@ -4,6 +4,8 @@
 #include "Reference.h"
 #include "Integer.h"
 
+struct Integer;
+
 struct Real : Object
 {
 

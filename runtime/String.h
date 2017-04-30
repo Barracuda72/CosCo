@@ -1,13 +1,18 @@
 #ifndef __String_H__
 #define __String_H__
 
-#include "Reference.h"
+#include <string>
+
 #include "Integer.h"
 
 template <class T> struct Array;
 
-struct String : Object
+class String : public Object
 {
+private:
+  std::string value;
+
+public:
   String();
   String(const char *s);
 
@@ -24,13 +29,13 @@ struct String : Object
   String operator=(Integer& i);
 
   Integer Call(); /* Call string as scenario */
-  Integer Char(Integer i = 0);
-  Integer Find(String s, Integer i = 0);
+  Integer Char(Integer i = Integer(0));
+  Integer Find(String s, Integer i = Integer(0));
   Integer GetLength();
   String Left(Integer i);
   void MakeUpper();
-  String Middle(Integer i, Integer c = -1 );
-  String Replace(String strOld, String strNew, Integer nFlag = 0);
+  String Middle(Integer i, Integer c = Integer(-1) );
+  String Replace(String strOld, String strNew, Integer nFlag = Integer(0));
   void TrimLeft();
   void TrimRight();
   String IsMatchUsage(String strUsage, Array <String> aParam /*Integer nIndex*/);

@@ -28,9 +28,9 @@ struct Sprite : Resource
   void MovePosition(Integer x, Integer y);
   void Refresh();
   Integer SetAlphaImage(Reference refAlpha, Integer nAlphaRange);
-  void SetBezierCurve(Array <Bezier2D> bzCurve);
-  void SetBezierCurve(Array <Bezier2D> bzCurve, Array <Bezier2D> bzRev);
-  void SetBezierCurve(Array <Bezier2D> bzCurve, Array <Bezier2D> bzRev, Array <Bezier2D> bzMagnify);
+  void SetBezierCurve(Bezier2D bzCurve);
+  void SetBezierCurve(Bezier2D bzCurve, Bezier2D bzRev);
+  void SetBezierCurve(Bezier2D bzCurve, Bezier2D bzRev, Bezier2D bzMagnify);
   void SetBlendDegree(Integer nDegree);
   void SetBlendingEnvelope(Integer nTargetEnvelope);
   void SetBlendingEnvelope(Array <Bezier2D> bzEnvelope);
