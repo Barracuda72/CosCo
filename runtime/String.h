@@ -4,6 +4,8 @@
 #include "Reference.h"
 #include "Integer.h"
 
+template <class T> struct Array;
+
 struct String : Object
 {
   String();
@@ -21,7 +23,7 @@ struct String : Object
 
   String operator=(Integer& i);
 
-  void Call(); /* Call string as scenario */
+  Integer Call(); /* Call string as scenario */
   Integer Char(Integer i = 0);
   Integer Find(String s, Integer i = 0);
   Integer GetLength();
@@ -29,6 +31,9 @@ struct String : Object
   void MakeUpper();
   String Middle(Integer i, Integer c = -1 );
   String Replace(String strOld, String strNew, Integer nFlag = 0);
+  void TrimLeft();
+  void TrimRight();
+  String IsMatchUsage(String strUsage, Array <String> aParam /*Integer nIndex*/);
 };
 
 #endif // __String_H__

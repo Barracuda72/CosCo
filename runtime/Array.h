@@ -1,19 +1,18 @@
 #ifndef __Array_H__
 #define __Array_H__
 
+#include "Object.h"
 #include "Reference.h"
 #include "Integer.h"
-#include "String.h"
 
 template <class T>
 class Array : Object
 {
 public:
-  T operator[](const Reference& idx);
-  T operator[](const Integer& idx);
+  T operator[](const Object& idx);
   T operator[](int idx);
-  void operator+(const String& s);
-  void operator+(const Integer& i);
+  T operator[](const char* idx);
+  void operator+(const Object& s);
 
   Integer GetLength();
   void RemoveAll();

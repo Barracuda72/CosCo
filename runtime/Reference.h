@@ -12,6 +12,9 @@ private:
   Object object;
 
 public:
+  Reference();
+  Reference(Object o);
+
   String GetType();
 
   Reference & operator=(const Real &rhs);
@@ -25,6 +28,9 @@ public:
   friend Real & operator-(const Reference& one, const Real& other);
   friend Real & operator-(const Reference& one, const Reference& other);
   friend Real & operator*(const Reference& one, const Real& other);
+
+  /* String operations */
+  friend String & operator+(const Reference& one, const String& other);
 };
 
 #endif // __Reference_H__

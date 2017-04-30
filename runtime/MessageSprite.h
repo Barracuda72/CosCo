@@ -1,6 +1,7 @@
 #ifndef __MessageSprite_H__
 #define __MessageSprite_H__
 
+#include "Cotopha.h"
 #include "Sprite.h"
 
 struct MessageSprite : Sprite
@@ -8,10 +9,10 @@ struct MessageSprite : Sprite
   Integer AttachMessageStyle(Reference refStyle, String strDefaultStyle);
   Integer ClearMessage();
   void CreateMessage(Integer w, Integer h);
-  void CreateMessage(Integer w, Integer h, Reference /*Rect*/ rctMsgView);
-  void CreateMessage(Integer w, Integer h, Reference /*Rect*/ rctMsgView, Integer fMessageInSize);
+  void CreateMessage(Integer w, Integer h, Rect rctMsgView);
+  void CreateMessage(Integer w, Integer h, Rect rctMsgView, Integer fMessageInSize);
   Integer FlushMessage();
-  Reference /*Point*/ GetCursorPos();
+  Point GetCursorPos();
   Integer IsMessagePending();
   void MoveCursorPos(Integer x, Integer y);
   Integer OutputMessage(String strMsg);

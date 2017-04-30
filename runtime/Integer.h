@@ -24,6 +24,7 @@ struct Integer : Object
 
   Integer SetBit(Integer a);
   Integer ShiftLeft(Integer a);
+  Integer ShiftRight(Integer a);
   Integer TestBit(Integer a);
 };
 

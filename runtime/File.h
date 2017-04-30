@@ -21,6 +21,10 @@ struct File : Object
   Integer Seek(Integer nPos);
   Integer Seek(Integer nPos, Integer nOrigin);
   Integer WriteText(String /*Just object*/ a);
+
+  void operator+=(const String& s);
+
+  static Integer IsExisting(String filename);
 };
 
 #endif // __File_H__
