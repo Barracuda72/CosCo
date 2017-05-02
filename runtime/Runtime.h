@@ -3,7 +3,10 @@
 
 #include <string>
 #include <cmath>
+#include <vector>
+#include <map>
 
+#include "Cotopha.h"
 #include "File.h"
 #include "InputFilter.h"
 #include "MessageSprite.h"
