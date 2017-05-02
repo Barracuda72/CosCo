@@ -1,44 +1,43 @@
 #ifndef __Sprite_H__
 #define __Sprite_H__
 
-#include "Reference.h"
+#include <vector>
+
+#include "Cotopha.h"
 #include "Resource.h"
-#include "Array.h"
-#include "Integer.h"
-#include "String.h"
 
 struct Sprite : Resource
 {
-  void AddSprite(Integer priority, Sprite sprite);
-  Integer AttachImage(Reference refImage, Integer nFrameNum = -1 );
-  Integer AttachImage(Reference refImage, Integer nFrameNum /*=-1 by def*/, Rect rcClip);
-  void BeginActivation(Integer nDurationTime, Integer nActionType = 0);
-  void BeginActivation(Array <Integer> nDurationList, Integer nActionType = 0);
-  Integer CreateSprite(Integer format, Integer width, Integer height);
+  void AddSprite(int priority, Sprite sprite);
+  int AttachImage(void* refImage, int nFrameNum = -1 );
+  int AttachImage(void* refImage, int nFrameNum /*=-1 by def*/, Rect rcClip);
+  void BeginActivation(int nDurationTime, int nActionType = 0);
+  void BeginActivation(std::vector <int> nDurationList, int nActionType = 0);
+  int CreateSprite(int format, int width, int height);
   void DetachAllSprite();
-  void DetachSprite(Reference sprite);
-  Integer DrawImage(Reference rImage, SpriteParam spriteParam, Integer iFrame = 0);
-  Integer DrawImage(Reference rImage, ImageInfo spriteParam, Integer iFrame/*=0 by def*/, Rect rcClip);
-  void Enable(Integer enable, String strID = "");
-  Integer FillRect(Rect rect, Integer rgbaFill, Integer nTransparency = 0, Integer nFlags = 0);
+  void DetachSprite(void* sprite);
+  int DrawImage(void* rImage, SpriteParam spriteParam, int iFrame = 0);
+  int DrawImage(void* rImage, ImageInfo spriteParam, int iFrame/*=0 by def*/, Rect rcClip);
+  void Enable(int enable, std::string strID = "");
+  int FillRect(Rect rect, int rgbaFill, int nTransparency = 0, int nFlags = 0);
   void FlushActivation();
   void GetParameter(SpriteParam param);
-  String GetSpriteText(String strID);
-  Integer IsVisible();
-  void MovePosition(Integer x, Integer y);
+  std::string GetSpriteText(std::string strID);
+  int IsVisible();
+  void MovePosition(int x, int y);
   void Refresh();
-  Integer SetAlphaImage(Reference refAlpha, Integer nAlphaRange);
+  int SetAlphaImage(void* refAlpha, int nAlphaRange);
   void SetBezierCurve(Bezier2D bzCurve);
   void SetBezierCurve(Bezier2D bzCurve, Bezier2D bzRev);
   void SetBezierCurve(Bezier2D bzCurve, Bezier2D bzRev, Bezier2D bzMagnify);
-  void SetBlendDegree(Integer nDegree);
-  void SetBlendingEnvelope(Integer nTargetEnvelope);
-  void SetBlendingEnvelope(Array <Bezier2D> bzEnvelope);
-  void SetFocus(String strID);
+  void SetBlendDegree(int nDegree);
+  void SetBlendingEnvelope(int nTargetEnvelope);
+  void SetBlendingEnvelope(std::vector <Bezier2D> bzEnvelope);
+  void SetFocus(std::string strID);
   void SetParameter(SpriteParam param);
-  void SetSpriteText(String strID, String strText);
-  void SetTransparency(Integer nTransparency);
-  void SetVisible(Integer visible);
+  void SetSpriteText(std::string strID, std::string strText);
+  void SetTransparency(int nTransparency);
+  void SetVisible(int visible);
   void UpdateRect(Rect rect);
 };
 

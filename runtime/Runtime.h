@@ -1,10 +1,10 @@
 #ifndef __RUNTIME_H__
 #define __RUNTIME_H__
 
-#include "RuntimeBase.h"
+#include <string>
+#include <cmath>
 
 #include "File.h"
-#include "Hash.h"
 #include "InputFilter.h"
 #include "MessageSprite.h"
 #include "Resource.h"

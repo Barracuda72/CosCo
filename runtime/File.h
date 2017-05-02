@@ -1,30 +1,29 @@
 #ifndef __File_H__
 #define __File_H__
 
-#include "Reference.h"
-#include "Integer.h"
-#include "String.h"
+#include <string>
+
 #include "Sprite.h"
 
-struct File : Object
+struct File
 {
   void Close();
-  Integer DumpContext();
-  Integer DumpObject(Reference /*Just object*/ a);
-  Integer LoadObject(Reference /*Just object, mb ref?*/ a);
-  Integer Open(String filename);
-  Integer Open(String filename, Integer nFlags);
-  Integer SaveObject(Reference /*Just object*/ a);
-  Integer SaveObject(Reference /*Just object*/ a, String title);
-  Integer SaveThumbnailImage(Sprite sprThumb);
-  Integer SaveThumbnailImage(Sprite sprThumb, Integer w, Integer h);
-  Integer Seek(Integer nPos);
-  Integer Seek(Integer nPos, Integer nOrigin);
-  Integer WriteText(String /*Just object*/ a);
+  int DumpContext();
+  int DumpObject(void* /*Just object*/ a);
+  int LoadObject(void* /*Just object, mb ref?*/ a);
+  int Open(std::string filename);
+  int Open(std::string filename, int nFlags);
+  int SaveObject(void* /*Just object*/ a);
+  int SaveObject(void* /*Just object*/ a, std::string title);
+  int SaveThumbnailImage(Sprite sprThumb);
+  int SaveThumbnailImage(Sprite sprThumb, int w, int h);
+  int Seek(int nPos);
+  int Seek(int nPos, int nOrigin);
+  int WriteText(std::string /*Just object*/ a);
 
-  void operator+=(const String& s);
+  void operator+=(const std::string& s);
 
-  static Integer IsExisting(String filename);
+  static int IsExisting(std::string filename);
 };
 
 #endif // __File_H__

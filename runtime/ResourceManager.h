@@ -1,16 +1,17 @@
 #ifndef __ResourceManager_H__
 #define __ResourceManager_H__
 
-#include "Reference.h"
-#include "Integer.h"
+#include <string>
 
-struct ResourceManager : Object
+#include "Resource.h"
+
+struct ResourceManager
 {
-  Integer CreateFormPage(Reference refSprite, String strPageID);
+  int CreateFormPage(void* refSprite, std::string strPageID);
   void DeleteContents();
-  Integer LoadResource(String filename);
+  int LoadResource(std::string filename);
   
-  Resource GetLoadedResource(String id); /* Extension, instead of .ID_XXXX */
+  Resource GetLoadedResource(std::string id); /* Extension, instead of .ID_XXXX */
 };
 
 #endif // __ResourceManager_H__

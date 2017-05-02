@@ -1,21 +1,19 @@
 #ifndef __InputFilter_H__
 #define __InputFilter_H__
 
-#include "Reference.h"
-#include "Integer.h"
-#include "String.h"
+#include <string>
 
-struct InputFilter : Object
+struct InputFilter
 {
   void CloseFilter();
   void DeleteInputFilter();
-  void FlushInputQueue(Integer nLimit);
-  Integer FlushJoyButtonPushed(Integer iDevNum = 0, Integer iKeyNum = -1);
-  Integer GetJoyButtonPushed(Integer iKeyNum, Integer iDevNum = 0);
-  Integer IsJoyButtonPushing(Integer iKeyNum, Integer iDevNum = 0);
-  Integer LoadInputFilter(String filename);
-  void OpenFilter(Integer nFilterType = 0);
-  void OpenFilter(Integer nFilterType /*= 0 by def*/, Reference refWindow);
+  void FlushInputQueue(int nLimit);
+  int FlushJoyButtonPushed(int iDevNum = 0, int iKeyNum = -1);
+  int GetJoyButtonPushed(int iKeyNum, int iDevNum = 0);
+  int IsJoyButtonPushing(int iKeyNum, int iDevNum = 0);
+  int LoadInputFilter(std::string filename);
+  void OpenFilter(int nFilterType = 0);
+  void OpenFilter(int nFilterType /*= 0 by def*/, void* refWindow);
 };
 
 #endif // __InputFilter_H__

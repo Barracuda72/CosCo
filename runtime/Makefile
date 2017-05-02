@@ -1,11 +1,5 @@
 OBJECTS=\
-  Reference.o \
-  Array.o \
-  Integer.o \
-  Real.o \
-  String.o \
   Sprite.o \
-  Hash.o \
   Resource.o \
   ResourceManager.o \
   SuperSprite.o \
@@ -16,7 +10,7 @@ OBJECTS=\
   Cotopha.o
 
 TARGET=libCRT.so
-CXXFLAGS=-fPIC -g
+CXXFLAGS=-fPIC -g -std=c++14
 
 all: $(OBJECTS)
 	g++ -g -shared -o $(TARGET) $(OBJECTS)

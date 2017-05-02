@@ -1,17 +1,16 @@
 #ifndef __COTOPHA_H__
 #define __COTOPHA_H__
 
-#include "RuntimeBase.h"
+//#include "yosuga.h"
+#include <string>
+#include <cmath>
 
 /*
  * Constants
  */
 
-//#define NULL 0
-//#define true (0 - 1)
-//#define false 0
 #define eslErrSuccess 0
-#define eslErrNotSupported (0 - 1)
+#define eslErrNotSupported -1
 #define eslErrGeneral 1
 #define eslErrAbort 2
 #define eslErrInvalidParam 3
@@ -179,7 +178,7 @@
 #define tffFixZero 1
 #define tffMaskWithAlpha 2
 #define tffYUVFilter 4
-#define INFINITE (0 - 1)
+#define INFINITE -1
 #define csotAdd 0
 #define csotSub 1
 #define csotMul 2
@@ -264,11 +263,6 @@
  * Class declarations (headers)
  */
 
-struct Integer;
-struct Real;
-struct String;
-//struct Array;
-
 struct Point;
 struct Size;
 struct Rect;
@@ -299,213 +293,211 @@ struct BezierR64;
 
 struct Point
 {
-  Integer x;
-  Integer y;
+  int x;
+  int y;
   Point();
 };
 
 struct Size
 {
-  Integer w;
-  Integer h;
+  int w;
+  int h;
   Size();
 };
 
 struct Rect
 {
-  Integer left;
-  Integer top;
-  Integer right;
-  Integer bottom;
+  int left;
+  int top;
+  int right;
+  int bottom;
   Rect();
 };
 
 struct SpriteParam
 {
-  Integer nFlags;
+  int nFlags;
   Point ptDstPos;
   Point ptRevCenter;
-  Real rHorzUnit;
-  Real rVertUnit;
-  Real rRevAngle;
-  Real rCrossingAngle;
-  Integer rgbDimColor;
-  Integer rgbLightColor;
-  Integer nTransparency;
-  Real rZOrder;
-  Integer rgbColorParam1;
+  double rHorzUnit;
+  double rVertUnit;
+  double rRevAngle;
+  double rCrossingAngle;
+  int rgbDimColor;
+  int rgbLightColor;
+  int nTransparency;
+  double rZOrder;
+  int rgbColorParam1;
   SpriteParam();
 };
 
 struct ImageInfo
 {
-  Integer nFormatType;
-  Integer nImageWidth;
-  Integer nImageHeight;
-  Integer nBitsPerPixel;
-  Integer nFrameCount;
-  Integer xHotSpot;
-  Integer yHotSpot;
-  Integer nResourceBytes;
+  int nFormatType;
+  int nImageWidth;
+  int nImageHeight;
+  int nBitsPerPixel;
+  int nFrameCount;
+  int xHotSpot;
+  int yHotSpot;
+  int nResourceBytes;
   ImageInfo();
 };
 
 struct SoundInfo
 {
-  Integer nSampleCount;
-  Integer nSamplesPerSec;
-  Integer nChannelCount;
-  Integer nBitsPerSample;
-  Integer nRewoundPosition;
-  Integer nResourceBytes;
+  int nSampleCount;
+  int nSamplesPerSec;
+  int nChannelCount;
+  int nBitsPerSample;
+  int nRewoundPosition;
+  int nResourceBytes;
   SoundInfo();
 };
 
 struct WndSpriteCmd
 {
-  String strID;
-  String strFullID;
-  Integer nNotification;
-  Integer nParameter;
+  std::string strID;
+  std::string strFullID;
+  int nNotification;
+  int nParameter;
   WndSpriteCmd();
 };
 
 struct Vector2D
 {
-  Real x;
-  Real y;
+  double x;
+  double y;
   Vector2D();
-  /* TODO! */
   friend Vector2D operator+(const Vector2D& one, const Vector2D& other);
   friend Vector2D operator-(const Vector2D& one, const Vector2D& other);
-  friend Vector2D operator*(const Vector2D& one, const Real& scale);
-  friend Vector2D operator/(const Vector2D& one, const Real& scale);
-  Vector2D Revolve(Real r);
-  Real Abs();
+  friend Vector2D operator*(const Vector2D& one, double other);
+  friend Vector2D operator/(const Vector2D& one, double other);
+  Vector2D Revolve(double r);
+  double Abs();
   Vector2D RoundTo1();
 };
 
 struct Vector
 {
-  Real x;
-  Real y;
-  Real z;
+  double x;
+  double y;
+  double z;
   Vector();
-  /* TODO! */
   friend Vector operator+(const Vector& one, const Vector& other);
   friend Vector operator-(const Vector& one, const Vector& other);
-  friend Vector operator*(const Vector& one, const Real& scale);
-  friend Vector operator/(const Vector& one, const Real& scale);
-  Real Abs();
+  friend Vector operator*(const Vector& one, double other);
+  friend Vector operator/(const Vector& one, double other);
+  double Abs();
   Vector RoundTo1();
 };
 
 struct InputEvent
 {
-  Integer idType;
-  Integer iDevNum;
-  Integer iKeyNum;
-  String strCommand;
+  int idType;
+  int iDevNum;
+  int iKeyNum;
+  std::string strCommand;
   InputEvent();
 };
 
-struct Bezier1D //: Array
+struct Bezier1D
 {
-  Array <Real> parent;
+  double parent[4];
   Bezier1D();
-  void SetLinear(Real r0, Real r1);
-  void SetAcceleration(Real a0, Real a1);
-  Real pt(Real t);
+  void SetLinear(double r0, double r1);
+  void SetAcceleration(double a0, double a1);
+  double pt(double t);
 };
 
-struct Bezier2D //: Array
+struct Bezier2D
 {
-  Array <Vector2D> parent;
+  Vector2D parent[4];
   Bezier2D();
-  void SetLinear(Real x0, Real y0, Real x1, Real y1);
-  void SetAcceleration(Real a0, Real a1);
-  void SetCurve(Real r0, Real r1);
-  Vector2D pt(Real t);
+  void SetLinear(double x0, double y0, double x1, double y1);
+  void SetAcceleration(double a0, double a1);
+  void SetCurve(double r0, double r1);
+  Vector2D pt(double t);
 };
 
-struct Bezier3D //: Array
+struct Bezier3D
 {
-  Array <Vector> parent;
+  Vector parent[4];
   Bezier3D();
-  void SetLinear(Real x0, Real y0, Real z0, Real x1, Real y1, Real z1);
-  void SetAcceleration(Real a0, Real a1);
-  Vector pt(Real t);
+  void SetLinear(double x0, double y0, double z0, double x1, double y1, double z1);
+  void SetAcceleration(double a0, double a1);
+  Vector pt(double t);
 };
 
 struct SurfaceAttribute
 {
-  Integer nShadingFlags;
-  Integer rgbColorMul;
-  Integer rgbColorAdd;
-  Integer nAmbient;
-  Integer nDiffusion;
-  Integer nSpecular;
-  Integer nTransparency;
-  Integer nDeepness;
+  int nShadingFlags;
+  int rgbColorMul;
+  int rgbColorAdd;
+  int nAmbient;
+  int nDiffusion;
+  int nSpecular;
+  int nTransparency;
+  int nDeepness;
   SurfaceAttribute();
 };
 
 struct E3DColor
 {
-  Integer rgbMul;
-  Integer rgbAdd;
+  int rgbMul;
+  int rgbAdd;
   E3DColor();
 };
 
 struct LightEntry
 {
-  Integer nLightType;
-  Integer rgbColor;
-  Real rBrightness;
+  int nLightType;
+  int rgbColor;
+  double rBrightness;
   Vector vecLight;
   LightEntry();
 };
 
 struct Time
 {
-  Integer nYear;
-  Integer nMonth;
-  Integer nDay;
-  Integer nWeek;
-  Integer nHour;
-  Integer nMinute;
-  Integer nSecond;
+  int nYear;
+  int nMonth;
+  int nDay;
+  int nWeek;
+  int nHour;
+  int nMinute;
+  int nSecond;
   Time();
 };
 
 struct MemoryStatus
 {
-  Integer nTotalPhys;
-  Integer nAvailPhys;
-  Integer nTotalVirtual;
-  Integer nAvailVirtual;
+  int nTotalPhys;
+  int nAvailPhys;
+  int nTotalVirtual;
+  int nAvailVirtual;
   MemoryStatus();
 };
 
 struct EffectParam
 {
-  String strType;
-  Integer nFlags;
-  Integer nInterval;
-  Integer nDegreeStep;
-  Integer nShakingWidth;
-  Integer nMeshSize;
-  Integer nMeshDivision;
-  Integer nFrequency;
+  std::string strType;
+  int nFlags;
+  int nInterval;
+  int nDegreeStep;
+  int nShakingWidth;
+  int nMeshSize;
+  int nMeshDivision;
+  int nFrequency;
   Size sizeView;
   Point ptSpeed;
-  Integer nAlphaRange;
-  Integer nMilliSecPerDegree;
+  int nAlphaRange;
+  int nMilliSecPerDegree;
   Point ptSmashPoint;
-  Real rSmashDelay;
-  Real rSmashPower;
-  Real rRandomPower;
-  Real rDeceleration;
+  double rSmashDelay;
+  double rSmashPower;
+  double rRandomPower;
+  double rDeceleration;
   Vector vVelocity;
   Vector vGravity;
   Vector vRevSpeed;
@@ -513,38 +505,38 @@ struct EffectParam
   EffectParam();
 };
 
-struct ParticleFlick : Object
+struct ParticleFlick
 {
-  Real rAmplitude;
-  Real rAmplitudeRange;
-  Real rFrequency;
-  Real rFrequencyRange;
+  double rAmplitude;
+  double rAmplitudeRange;
+  double rFrequency;
+  double rFrequencyRange;
   ParticleFlick();
 };
 
 struct ParticleParam
 {
-  Integer nFlags;
-  Integer nDuration;
-  Integer nAnimationSpeed;
-  Integer nFadein;
-  Integer nFadeout;
-  Integer nFadeTransparency;
-  Real rFadeZoom;
-  Real rGenWidth;
-  Real rGenHeight;
-  Real rGenAngle;
-  Real rGenAngleRange;
-  Real rGenVelocity;
-  Real rGenVelocityRange;
-  Real rShrink;
-  Real rRevSpeed;
-  Real rRevSpeedRange;
-  Real rZoom;
-  Real rZoomRange;
-  Array<ParticleFlick> pfFlickness;
+  int nFlags;
+  int nDuration;
+  int nAnimationSpeed;
+  int nFadein;
+  int nFadeout;
+  int nFadeTransparency;
+  double rFadeZoom;
+  double rGenWidth;
+  double rGenHeight;
+  double rGenAngle;
+  double rGenAngleRange;
+  double rGenVelocity;
+  double rGenVelocityRange;
+  double rShrink;
+  double rRevSpeed;
+  double rRevSpeedRange;
+  double rZoom;
+  double rZoomRange;
+  ParticleFlick pfFlickness[2];
   Vector2D vGenSpeed;
-  Real rGenSpeedRange;
+  double rGenSpeedRange;
   Vector2D vStream;
   Vector2D vGravity;
   ParticleParam();
@@ -552,29 +544,29 @@ struct ParticleParam
 
 struct ParticleParam3D
 {
-  Integer nFlags;
-  Integer nDuration;
-  Integer nAnimationSpeed;
-  Integer nFadein;
-  Integer nFadeout;
-  Integer nFadeTransparency;
-  Real rFadeZoom;
+  int nFlags;
+  int nDuration;
+  int nAnimationSpeed;
+  int nFadein;
+  int nFadeout;
+  int nFadeTransparency;
+  double rFadeZoom;
   Vector vGenWidth;
   Vector vGenAngle;
-  Real rGenAngleRange;
-  Real rGenVelocity;
-  Real rGenVelocityRange;
-  Real rShrink;
+  double rGenAngleRange;
+  double rGenVelocity;
+  double rGenVelocityRange;
+  double rShrink;
   Vector vRevBaseAxis;
-  Real rRevSpeed;
-  Real rRevSpeedRange;
+  double rRevSpeed;
+  double rRevSpeedRange;
   Vector vRevRevAxis;
-  Real rRevRevRange;
-  Real rZoom;
-  Real rZoomRange;
-  Array <ParticleFlick> pfFlickness;
+  double rRevRevRange;
+  double rZoom;
+  double rZoomRange;
+  ParticleFlick pfFlickness[2];
   Vector vGenSpeed;
-  Real rGenSpeedRange;
+  double rGenSpeedRange;
   Vector vStream;
   Vector vGravity;
   ParticleParam3D();
@@ -582,39 +574,20 @@ struct ParticleParam3D
 
 struct BezierR64
 {
-  Array<Real> cp;
-
-  void SetLinear(Real r0, Real r1);
-  void SetAcceleration(Real a0, Real a1);
-  Real pt(Real t);
+  double cp[4];
+  void SetLinear(double r0, double r1);
+  void SetAcceleration(double a0, double a1);
+  double pt(double t);
 };
-
-
-/*
- * Variables
- */
-
 
 /*
  * Standalone functions (headers)
  */
 
-Real fabs(Real x);
-Real log(Real x);
-Real log10(Real x);
-Real pow(Real x, Real y);
-Real sqrt(Real x);
-Real sin(Real x);
-Real cos(Real x);
-Real tan(Real x);
-Real asin(Real x);
-Real acos(Real x);
-Real atan(Real x);
-Real atan2(Real x, Real y);
-Point IPoint(Integer x, Integer y);
-Size ISize(Integer w, Integer h);
-Rect IRect(Integer left, Integer top, Integer right, Integer bottom);
-Vector2D IVector2D(Real x, Real y);
-Vector IVector(Real x, Real y, Real z);
+Point IPoint(int x, int y);
+Size ISize(int w, int h);
+Rect IRect(int left, int top, int right, int bottom);
+Vector2D IVector2D(double x, double y);
+Vector IVector(double x, double y, double z);
 
 #endif // __COTOPHA_H__

@@ -25,9 +25,23 @@ void generate_statement_end(FILE *output)
   fprintf(output, ";\n");
 }
 
+/*
+ * Generate variable declaration
+ */
 void generate_var_decl_stmt(FILE *output, tree *node, int level)
 {
   make_indent(output, level);
+  generate_var_decl(output, node, level);
+  generate_statement_end(output);
+}
+
+/*
+ * Generate extern variable declaration
+ */
+void generate_extrn_var_decl_stmt(FILE *output, tree *node, int level)
+{
+  make_indent(output, level);
+  fprintf(output, "extern ");
   generate_var_decl(output, node, level);
   generate_statement_end(output);
 }
@@ -844,33 +858,44 @@ void generate_program(FILE *output, tree *root)
   /* UGLY HACK */
   cur_root = root;
 
+  /* Generate header */
   /* Step 0: output runtime inclusion */
-  fprintf(output, "#include \"Runtime.h\"\n");
+  fprintf(stdout, "#include \"Runtime.h\"\n");
 
   /* Step 1: generate defines (constants) */
-  fprintf(output, "\n/*\n * Constants\n */\n\n");
-  generator_foreach_cond(output, root, NODE_CONST_DECL, generate_const_decl);
+  fprintf(stdout, "\n/*\n * Constants\n */\n\n");
+  generator_foreach_cond(stdout, root, NODE_CONST_DECL, generate_const_decl);
 
-  /* Step 2a: generate class declarations (headers) */
-  fprintf(output, "\n/*\n * Class declarations (headers)\n */\n\n");
-  generator_foreach_cond(output, root, NODE_CLASS_DEF, generate_class_head);
+  /* Step 2: generate class declarations (headers) */
+  fprintf(stdout, "\n/*\n * Class declarations (headers)\n */\n\n");
+  generator_foreach_cond(stdout, root, NODE_CLASS_DEF, generate_class_head);
 
-  /* Step 2b: generate class declarations (bodies) */
-  fprintf(output, "\n/*\n * Class declarations (bodies)\n */\n\n");
-  generator_foreach_cond(output, root, NODE_CLASS_DEF, generate_class_decl);
+  /* Step 3: generate function headers */
+  fprintf(stdout, "\n/*\n * Standalone functions (headers)\n */\n\n");
+  generator_foreach_cond(stdout, root, NODE_FUNC_DEF, generate_function_head);
 
-  /* Step 3: generate all variables */
-  fprintf(output, "\n/*\n * Variables\n */\n\n");
-  generator_foreach_cond(output, root, NODE_VAR_DECL, generate_var_decl_stmt);
+  /* Step 4: generate all variables as extern */
+  fprintf(stdout, "\n/*\n * Variables\n */\n\n");
+  generator_foreach_cond(stdout, root, NODE_VAR_DECL, generate_extrn_var_decl_stmt);
 
-  /* Step 4: generate standalone functions: headers first, then code */
-  fprintf(output, "\n/*\n * Standalone functions (headers)\n */\n\n");
-  generator_foreach_cond(output, root, NODE_FUNC_DEF, generate_function_head);
-  fprintf(output, "\n/*\n * Standalone functions (bodies)\n */\n\n");
-  generator_foreach_cond(output, root, NODE_FUNC_DEF, generate_function_def);
+  /* Step 5: generate class declarations (bodies) */
+  fprintf(stdout, "\n/*\n * Class declarations (bodies)\n */\n\n");
+  generator_foreach_cond(stdout, root, NODE_CLASS_DEF, generate_class_decl);
+
+  /* Now generating source */
+  /* Step 5: output custom inclusion */
+  fprintf(stderr, "#include \"fixme.h\"\n");
+
+  /* Step 5: generate all variables */
+  fprintf(stderr, "\n/*\n * Variables\n */\n\n");
+  generator_foreach_cond(stderr, root, NODE_VAR_DECL, generate_var_decl_stmt);
+
+  /* Step :: generate standalone functions: headers first, then code */
+  fprintf(stderr, "\n/*\n * Standalone functions (bodies)\n */\n\n");
+  generator_foreach_cond(stderr, root, NODE_FUNC_DEF, generate_function_def);
 
   /* Step 5: generate class methods */
-  fprintf(output, "\n/*\n * Class implementations\n */\n\n");
-  generator_foreach_cond(output, root, NODE_CLASS_DEF, generate_class_impl);
+  fprintf(stderr, "\n/*\n * Class implementations\n */\n\n");
+  generator_foreach_cond(stderr, root, NODE_CLASS_DEF, generate_class_impl);
 }
 

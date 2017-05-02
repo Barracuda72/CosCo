@@ -5,9 +5,9 @@
 #include "tree.h"
 #include "type.h"
 
-char *t_integer = "Integer";
-char *t_real = "Real";
-char *t_string = "String";
+char *t_integer = "int";
+char *t_real = "double";
+char *t_string = "std::string";
 char *t_void = "void";
 char *t_auto = "auto";
 

@@ -7,21 +7,21 @@
 struct Window : Sprite
 {
   void ChangeCooperationLevel(/* Defaults to CreateDisplay value */);
-  void ChangeCooperationLevel(Integer fCooperationLevel);
+  void ChangeCooperationLevel(int fCooperationLevel);
   void ChangeDisplaySize(/* Defaults to CreateDisplay values */);
-  void ChangeDisplaySize(Integer w, Integer h, Integer bpp = 0, Integer frequency = 0);
+  void ChangeDisplaySize(int w, int h, int bpp = 0, int frequency = 0);
   void CreateDisplay();
-  void CreateDisplay(String strWindowName, Integer fCooperationLevel, 
-                     Integer w, Integer h, Integer bpp = 0, Integer frequency = 0);
+  void CreateDisplay(std::string strWindowName, int fCooperationLevel, 
+                     int w, int h, int bpp = 0, int frequency = 0);
   void FlushCommandQueue();
-  void FlushCommandQueue(Integer fQueueCommand = 1/*true*/);
-  Integer GetCommand(WndSpriteCmd wscCmd, Integer nTimeout, Integer fRemove = 1 /* true */);
+  void FlushCommandQueue(int fQueueCommand = 1/*true*/);
+  int GetCommand(WndSpriteCmd wscCmd, int nTimeout, int fRemove = 1 /* true */);
   Size GetDisplaySize();
-  Integer GetOptionalFuncFlag();
-  Integer Lock(Integer nTimeout = -1 /* INFINITE */);
-  void SetOptionalFuncFlag(Integer nFlag);
-  void ShowCursor(Integer fShow = 1 /* true */);
-  Integer Unlock();
+  int GetOptionalFuncFlag();
+  int Lock(int nTimeout = -1 /* INFINITE */);
+  void SetOptionalFuncFlag(int nFlag);
+  void ShowCursor(int fShow = 1 /* true */);
+  int Unlock();
 };
 
 #endif // __Window_H__

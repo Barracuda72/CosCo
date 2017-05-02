@@ -3,8 +3,9 @@
 
 #include "Sprite.h"
 
-struct SuperSprite : Sprite
+struct SuperSprite
 {
+  int IsActivation();
 };
 
 #endif // __SuperSprite_H__
